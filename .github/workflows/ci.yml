@@ -19,7 +19,7 @@ jobs:
           echo "MINIO_DEV_ACCESS_KEY=${{ secrets.MINIO_DEV_ACCESS_KEY }}" >> .env
           echo "MINIO_DEV_SECRET_KEY=${{ secrets.MINIO_DEV_SECRET_KEY }}" >> .env
 
-      - name: Verify .env file
+      - name: Verify & Check .env file 
         run: cat .env
 
       - name: Build and Run Container
