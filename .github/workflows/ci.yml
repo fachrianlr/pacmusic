@@ -19,6 +19,9 @@ jobs:
           echo "MINIO_DEV_ACCESS_KEY=${{ secrets.MINIO_DEV_ACCESS_KEY }}" >> .env
           echo "MINIO_DEV_SECRET_KEY=${{ secrets.MINIO_DEV_SECRET_KEY }}" >> .env
 
+      - name: Verify .env file
+        run: cat .env
+
       - name: Build and Run Container
         run: |
           sudo docker compose up --build --detach pacmusic-dev
