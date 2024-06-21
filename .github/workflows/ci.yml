@@ -21,13 +21,17 @@ jobs:
 
       - name: Build and Run Container
         run: |
-          sudo docker compose up pacmusic-dev --build --detach
+          sudo docker compose up --build --detach pacmusic-dev
 
       - name: Hit Endpoint
         run: |
           sleep 20
           curl ${{ secrets.DEV_URL }}
-          
+      
+      - name: Install Python dependencies
+        run: |
+          pip install -r test/requirements.txt
+
       - name: Testing
         run: |
           python3 test/test.py
