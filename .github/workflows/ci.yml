@@ -26,7 +26,7 @@ jobs:
       - name: Hit Endpoint
         run: |
           sleep 20
-          curl ${{ vars.DEV_URL }}
+          curl ${{ secrets.DEV_URL }}
           
       - name: Testing
         run: |
