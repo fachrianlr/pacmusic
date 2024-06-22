@@ -14,8 +14,12 @@ jobs:
       - name: Execute deployment command
         uses: appleboy/ssh-action@v1.0.3
         env:
-          APP_PATH_STAGING: ${{ vars.APP_STG_PATH }}
+          APP_STG_PATH: ${{ vars.APP_STG_PATH }}
           GIT_URL: ${{ secrets.GIT_URL }}
+          APP_STG_PORT: ${{ secrets.APP_STG_PORT}}
+          MINIO_STG_ENDPOINT: ${{ secrets.MINIO_STG_ENDPOINT}}
+          MINIO_STG_ACCESS_KEY: ${{ secrets.MINIO_STG_ACCESS_KEY}}
+          MINIO_STG_SECRET_KEY: ${{ secrets.MINIO_STG_SECRET_KEY}}
 
         with:
           host: ${{ secrets.SSH_HOST_STAGING }}
