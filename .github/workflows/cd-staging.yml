@@ -40,6 +40,9 @@ jobs:
             echo "MINIO_STG_ACCESS_KEY=${{ secrets.MINIO_STG_ACCESS_KEY }}" >> .env
             echo "MINIO_STG_SECRET_KEY=${{ secrets.MINIO_STG_SECRET_KEY }}" >> .env
 
+            #verify
+            echo $PWD
+            
             # Run app
             sudo docker compose up app-staging --build --detach pacmusic-stg
       
