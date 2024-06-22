@@ -20,9 +20,6 @@ jobs:
           echo "MINIO_DEV_ACCESS_KEY=${{ secrets.MINIO_DEV_ACCESS_KEY }}" >> .env
           echo "MINIO_DEV_SECRET_KEY=${{ secrets.MINIO_DEV_SECRET_KEY }}" >> .env
 
-      - name: Verify & Check .env file 
-        run: cat .env
-
       - name: Build and Run Container
         run: |
           sudo docker compose up --build --detach pacmusic-dev
@@ -30,7 +27,7 @@ jobs:
       - name: Hit Endpoint
         run: |
           sleep 20
-          curl ${{ vars.DEV_URL }}
+          curl localhost:5000
       
       - name: Install Python dependencies
         run: |
