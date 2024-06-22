@@ -26,9 +26,9 @@ jobs:
           MINIO_PROD_SECRET_KEY: ${{ secrets.MINIO_PROD_SECRET_KEY}}
 
         with:
-          host: ${{ secrets.SSH_HOST_STAGING }}
-          username: ${{ secrets.SSH_USER_NAME_STAGING }}
-          key: ${{ secrets.SSH_PRIVATE_KEY_STAGING }}
+          host: ${{ secrets.SSH_HOST_PRODUCTION }}
+          username: ${{ secrets.SSH_USER_NAME_PRODUCTION }}
+          key: ${{ secrets.SSH_PRIVATE_KEY_PRODUCTION }}
           envs: APP_PROD_PATH, GIT_URL, APP_PROD_PORT, MINIO_PROD_ENDPOINT, MINIO_PROD_ACCESS_KEY, MINIO_PROD_SECRET_KEY
           script: |
 
