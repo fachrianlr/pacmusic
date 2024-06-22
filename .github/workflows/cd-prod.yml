@@ -36,7 +36,7 @@ jobs:
 
             if [[ -d "${APP_PROD_PATH}" ]]; then 
               cd $APP_PROD_PATH
-              sudo docker compose down pacmusic-PROD
+              sudo docker compose down pacmusic-prod
               git pull origin main
             else
               ssh-keyscan github.com > ~/.ssh/known_hosts
