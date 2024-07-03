@@ -49,9 +49,9 @@ jobs:
             echo "MINIO_STG_SECRET_KEY=${{ secrets.MINIO_STG_SECRET_KEY }}" >> .env
             
             # Run app
-            sudo docker compose up --build --detach pacmusic-stg
+            sudo docker compose up --build --detach pacmusic-stg-1 pacmusic-stg-2
       
       - name: Hit Endpoint
         run: |
           sleep 10
-          curl ${{ secrets.STG_URL }}
+          curl ${{ secrets.STG_URL_1 }} && curl ${{ secrets.STG_URL_2 }}
