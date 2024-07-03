@@ -40,7 +40,7 @@ jobs:
 
             if [[ -d "${APP_PROD_PATH}" ]]; then 
               cd $APP_PROD_PATH
-              sudo docker compose down pacmusic-prod-1 pacmusic-prod-1
+              sudo docker compose down pacmusic-prod-1 pacmusic-prod-2
               git pull origin main
             else
               ssh-keyscan github.com > ~/.ssh/known_hosts
@@ -50,7 +50,7 @@ jobs:
 
             # If there are any envars update
             echo "APP_PROD_PORT=$APP_PROD_PORT" > .env
-            echo "APP_PROD_PORT_1=$APP_PROD_PORT_2" >> .env
+            echo "APP_PROD_PORT_1=$APP_PROD_PORT_1" >> .env
             echo "APP_PROD_PORT_2=$APP_PROD_PORT_2" >> .env
             echo "MINIO_PROD_ENDPOINT=$MINIO_PROD_ENDPOINT" >> .env
             echo "MINIO_PROD_ACCESS_KEY=$MINIO_PROD_ACCESS_KEY" >> .env
