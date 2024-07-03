@@ -59,7 +59,7 @@ jobs:
             echo "APP_TAG=$APP_TAG" >> .env
 
             # Run app
-            sudo docker compose up --build --detach pacmusic-prod
+            sudo docker compose up --build --detach pacmusic-prod-1 pacmusic-prod-2
       
       - name: Hit Endpoint
         run: |
