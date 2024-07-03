@@ -32,7 +32,7 @@ jobs:
 
             if [[ -d "${APP_STG_PATH}" ]]; then 
               cd $APP_STG_PATH
-              sudo docker compose down pacmusic-stg
+              sudo docker compose down pacmusic-stg-1 pacmusic-stg-2
               git pull origin main
             else
               ssh-keyscan github.com > ~/.ssh/known_hosts
