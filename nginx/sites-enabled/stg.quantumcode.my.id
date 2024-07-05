@@ -1,0 +1,34 @@
+upstream stg_servers {
+	ip_hash;
+	server localhost:5002;
+	server localhost:5003;
+}
+
+server {
+    server_name stg.quantumcode.my.id;
+
+    
+    location / {
+        proxy_pass http://stg_servers;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/stg.quantumcode.my.id/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/stg.quantumcode.my.id/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
+    if ($host = stg.quantumcode.my.id) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name stg.quantumcode.my.id;
+    return 404; # managed by Certbot
+
+
+}

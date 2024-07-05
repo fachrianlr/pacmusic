@@ -71,6 +71,23 @@ services:
     networks:
       - pacmusic-network
 
+  # NGINX Reverse Proxy
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/certs:/etc/letsencrypt
+    networks:
+      - pacmusic-network
+    depends_on:
+      - pacmusic-dev
+      - pacmusic-stg-1
+      - pacmusic-stg-2
+
 networks:
   pacmusic-network:
     driver: bridge
